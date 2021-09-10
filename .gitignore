@@ -5,3 +5,4 @@ coverage/
 .env
 currency-api.txt
 rate.txt
+currency-list.txt
