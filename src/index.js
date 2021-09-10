@@ -44,11 +44,16 @@ $(document).ready(function () {
     // clearFields();
 
     $('.showErrors, .showRate, .showAmount').empty();
-    let promise = ExchangeRate.getRate(currencyType);
+
+    let promise = ExchangeRate.getRate(currencyType, currencyAmount);
     promise.then(function (response) {
       const body = JSON.parse(response);
-      $(".showRate").append(`<p>Current exchange rate for $1.00 ` + body.base_code + ` is ` + formatter.format(body.conversion_rate.toFixed(2)).replace('$', '') + ` ` + body.target_code + `</p>`);
-      $(".showAmount").append(`<p>Exchange rate for ${formatter.format(currencyAmount)} ` + body.base_code + ` is ` + formatter.format(body.conversion_rate.toFixed(2) * currencyAmount).replace('$', '') + ` ` + body.target_code + `</p>`);
+      try {
+        $(".showRate").append(`<p>Current exchange rate for $1.00 ` + body.base_code + ` is ` + formatter.format(body.conversion_rate.toFixed(2)).replace('$', '') + ` ` + body.target_code + `</p>`);
+        $(".showAmount").append(`<p>Exchange rate for ${formatter.format(currencyAmount)} ` + body.base_code + ` is ` + formatter.format(body.conversion_result.toFixed(2)).replace('$', '') + ` ` + body.target_code + `</p>`);
+      } catch (error) {
+        $(".showErrors").text(`Error: Please input a number to convert. ${error.message}`);
+      }
     }, function (error) {
       $('.showErrors').text(`There was an error processing your request: ${error} Unsupported currency type: ${currencyType}`);
     });
