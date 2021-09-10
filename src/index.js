@@ -5,45 +5,45 @@ import './css/styles.css';
 import ExchangeRate from './exchange.js';
 
 function clearFields() {
-  $('#location').val("");
-  $('.showAPOD').text("");
-  $('.showMarsCam').text("");
-  $('.showDONKI').text("");
+  $('#exchange').val("");
+  // $('.showAPOD').text("");
+  // $('.showMarsCam').text("");
+  // $('.showDONKI').text("");
 }
 
 $(document).ready(function() {
-  $('#weatherLocation').click(function() {
-    let earth_date = $('#date').val();
+  $('#exchange').click(function() {
+    let currencyType = $('#toExchange').val();
     clearFields();
     
-    let promise = ExchangeRate.getRate(currency);
+    let promise = ExchangeRate.getRate(currencyType);
     promise.then(function(response) {
       const body = JSON.parse(response);
-      $(".showMarsCam").append(`<img src='` + body.photos[0].img_src + `'style='height:350px; width:400px;'/>`);
+      $(".showRate").append(`<p>Exchanging rate for 1 ` + body.base_code + ` is ` + body.conversion_rate.toFixed(2) + ` ` + body.target_code + `</p>`);
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error}`);
     });
     
-    let promise1 = MarsCam.getAPOD(earth_date);
-    promise1.then(function(response) {
-      const body = JSON.parse(response);
-      $(".showAPOD").append(`<img src='` + body.hdurl + `'style='height:600px;'/><br>
-      <p class="card">Explanation: ` + body.explanation + `</p>`);
-    });
+    // let promise1 = MarsCam.getAPOD(earth_date);
+    // promise1.then(function(response) {
+    //   const body = JSON.parse(response);
+    //   $(".showAPOD").append(`<img src='` + body.hdurl + `'style='height:600px;'/><br>
+    //   <p class="card">Explanation: ` + body.explanation + `</p>`);
+    // });
 
-    let promise2 = MarsCam.getDONKI();
-    promise2.then(function(response) {
-      const body = JSON.parse(response);
-      let i = 0;
-      if (body.length > 3) {
-        i = body.length - 3;
-      }
-      while (i < body.length) {
-        $(".showDONKI").append(`<h5>Flare Name: ` + body[i].instruments[0].displayName + `</h5>`);
-        $(".showDONKI").append(`<li>Peak Time: ` + body[i].peakTime + `</li>`);
-        $(".showDONKI").append(`<li>Flare Class: ` + body[i].classType + `</li>`);
-        i++;
-      }
-    });
+    // let promise2 = MarsCam.getDONKI();
+    // promise2.then(function(response) {
+    //   const body = JSON.parse(response);
+    //   let i = 0;
+    //   if (body.length > 3) {
+    //     i = body.length - 3;
+    //   }
+    //   while (i < body.length) {
+    //     $(".showDONKI").append(`<h5>Flare Name: ` + body[i].instruments[0].displayName + `</h5>`);
+    //     $(".showDONKI").append(`<li>Peak Time: ` + body[i].peakTime + `</li>`);
+    //     $(".showDONKI").append(`<li>Flare Class: ` + body[i].classType + `</li>`);
+    //     i++;
+    //   }
+    // });
   });
 });

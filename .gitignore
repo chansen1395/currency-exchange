@@ -4,3 +4,4 @@ dist/
 coverage/
 .env
 currency-api.txt
+rate.txt

@@ -1,8 +1,8 @@
 export default class MarsCam {  
-  static getRate(currency) {
+  static getRate(currencyType) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
-      const url = `https://v6.exchangerate-api.com/v6/${API_KEY}/pair/USD/${currency}`;
+      const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${currencyType}`;
       request.onload = function() {
         if (this.status === 200) {
           resolve(request.response);
