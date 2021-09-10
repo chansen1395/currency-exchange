@@ -3,5 +3,4 @@ node_modules/
 dist/
 coverage/
 .env
-postman.txt
-insight.txt
+currency-api.txt

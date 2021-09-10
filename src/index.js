@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import MarsCam from './mars-cam.js';
+import ExchangeRate from './exchange.js';
 
 function clearFields() {
   $('#location').val("");
@@ -16,7 +16,7 @@ $(document).ready(function() {
     let earth_date = $('#date').val();
     clearFields();
     
-    let promise = MarsCam.getMarsCam(earth_date);
+    let promise = ExchangeRate.getRate(currency);
     promise.then(function(response) {
       const body = JSON.parse(response);
       $(".showMarsCam").append(`<img src='` + body.photos[0].img_src + `'style='height:350px; width:400px;'/>`);
