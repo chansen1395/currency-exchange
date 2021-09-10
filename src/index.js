@@ -13,24 +13,17 @@ import ExchangeRate from './exchange.js';
 
 
 $(document).ready(function () {
-  // let promise = ExchangeRate.getCurrencies();
-  // promise.then(function (response) {
-  ExchangeRate.getCurrencies();
-  (function (response) {
+  let promise = ExchangeRate.getCurrencies();
+  promise.then(function (response) {
     const body = JSON.parse(response);
-    let currCount = body.conversion_rates.length;
-    let currSelect = 0;
-    // console.log(i);
-    console.log(body.conversion_rates.length);
-    while (currCount >= 1) {
-      $('#toExchange').append(`<option value="` + body.conversion_rates[currSelect] + `">${body.conversion_rates[currSelect]}</option>`);
-      currCount--;
-      currSelect++;
+    var currList = Object.keys(body.conversion_rates);
+    for (var i in currList) {
+      $('#toExchange').append(`<option value="` + currList[i] + `">${currList[i]}</option>`);
     }
+  }, function (error) {
+    $('.showErrors').text(`There was an error processing your request: ${error}`);
   });
-  // }, function (error) {
-  //   $('.showErrors').text(`There was an error processing your request: ${error} Unsupported currency type: ${currencyType}`);
-  // });
+
 
 
   $('#exchange').click(function () {
