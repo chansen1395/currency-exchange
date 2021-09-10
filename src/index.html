@@ -6,12 +6,15 @@
   <div class="container">
     <div class="jumbotron">
       <h1>Currency Exchange</h1>
+      <label for="toExchange">Exchange Rate from USD to: </label>
+      <input id="toExchange" type="text" required>
+      <label for="amount">Choose an amount up to $1,000,000 you wish to Exchange: </label>
+      <input id="amount" type="number" min="0.01" step="0.01" max="1000000" required>
+      <button class="btn-success" id="exchange">Get Rate</button>
     </div>
-    <label for="toExchange">Choose a currency to :</label>
-    <input id="toExchange" type="text">
-    <!-- <input id="toExchange" min="0.01" step="0.01" max="1000000"> -->
-    <button class="btn-success" id="exchange">Get Rate</button>
     <div class="showRate card"></div>
+    <div class="showAmount card"></div>
+    <div class="showErrors card"></div>
   </div>
 </body>
 </html>

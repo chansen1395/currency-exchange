@@ -14,14 +14,17 @@ function clearFields() {
 $(document).ready(function() {
   $('#exchange').click(function() {
     let currencyType = $('#toExchange').val();
+    let currencyAmount = $('#amount').val();
     clearFields();
+    $('.showErrors').empty();
     
     let promise = ExchangeRate.getRate(currencyType);
     promise.then(function(response) {
       const body = JSON.parse(response);
-      $(".showRate").append(`<p>Exchanging rate for 1 ` + body.base_code + ` is ` + body.conversion_rate.toFixed(2) + ` ` + body.target_code + `</p>`);
+      $(".showRate").append(`<p>Current exchange rate for 1 ` + body.base_code + ` is ` + body.conversion_rate.toFixed(2) + ` ` + body.target_code + `</p>`);
+      $(".showAmount").append(`<p>Exchange rate for ${currencyAmount} ` + body.base_code + ` is ` + (body.conversion_rate.toFixed(2) * currencyAmount) + ` ` + body.target_code + `</p>`);
     }, function(error) {
-      $('.showErrors').text(`There was an error processing your request: ${error}`);
+      $('.showErrors').text(`There was an error processing your request: ${error} Unsupported currency type: ${currencyType}`);
     });
     
     // let promise1 = MarsCam.getAPOD(earth_date);
