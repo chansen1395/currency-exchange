@@ -1,22 +1,29 @@
 <html lang="en-US">
+
 <head>
   <title>Currency Exchange</title>
 </head>
+
 <body>
   <div class="container">
     <div class="jumbotron">
       <h1>Currency Exchange</h1>
-      <label for="amount">Choose an amount in USD you wish to Exchange: </label>
-      <input id="amount" type="number" min="0.01" step="0.01" required>
-      <label for="currencySelect">Exchange Rate from USD to: </label>
-      <select name="currency-select" id="toExchange">
-      </select>
+      <label for="amount">Choose an amount you wish to exchange:
+      </label>
+      <input id="amount" type="number" min="0.01" step="0.01" required />
+      <label for="currency-from">Convert from: </label>
+      <select name="currency-from" id="exchangeFrom"></select>
+      <label for="currency-to">Exchange to: </label>
+      <select name="currency-to" id="exchangeTo"></select>
       <br>
       <button class="btn-success" id="exchange">Get Rate</button>
     </div>
+    <div id="results">
     <div class="showRate card"></div>
     <div class="showAmount card"></div>
     <div class="showErrors card"></div>
   </div>
+  </div>
 </body>
+
 </html>
