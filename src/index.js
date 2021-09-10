@@ -15,12 +15,24 @@ import ExchangeRate from './exchange.js';
 $(document).ready(function () {
   // let promise = ExchangeRate.getCurrencies();
   // promise.then(function (response) {
-  //   const body = JSON.parse(response);
-  //   $(".showRate").append(`<p>Current exchange rate for $1.00 ` + body.base_code + ` is ` + formatter.format(body.conversion_rate.toFixed(2)).replace('$', '') + ` ` + body.target_code + `</p>`);
-  //   $(".showAmount").append(`<p>Exchange rate for ${formatter.format(currencyAmount)} ` + body.base_code + ` is ` + formatter.format(body.conversion_rate.toFixed(2) * currencyAmount).replace('$', '') + ` ` + body.target_code + `</p>`);
+  ExchangeRate.getCurrencies();
+  (function (response) {
+    const body = JSON.parse(response);
+    let currCount = body.conversion_rates.length;
+    let currSelect = 0;
+    // console.log(i);
+    console.log(body.conversion_rates.length);
+    while (currCount >= 1) {
+      $('#toExchange').append(`<option value="` + body.conversion_rates[currSelect] + `">${body.conversion_rates[currSelect]}</option>`);
+      currCount--;
+      currSelect++;
+    }
+  });
   // }, function (error) {
   //   $('.showErrors').text(`There was an error processing your request: ${error} Unsupported currency type: ${currencyType}`);
   // });
+
+
   $('#exchange').click(function () {
     let currencyType = $('#toExchange').val();
     let currencyAmount = $('#amount').val();
