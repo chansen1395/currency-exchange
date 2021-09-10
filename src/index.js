@@ -33,7 +33,7 @@ $(document).ready(function () {
     $('.results, .showErrors').show();
     let currencyFrom = $('#exchangeFrom').val();
     let currencyTo = $('#exchangeTo').val();
-    let currencyAmount = $('#amount').val();
+    let currencyAmount = Math.abs($('#amount').val());
 
     // Formatter to convert output to xx,xxx.xx
     var formatter = new Intl.NumberFormat('en-US', {
@@ -55,4 +55,5 @@ $(document).ready(function () {
       $('.showErrors').text(`There was an error processing your request: ${error} Unsupported currency type: ${currencyTo}`);
     });
   });
+
 });

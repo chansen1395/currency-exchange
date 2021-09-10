@@ -14,3 +14,7 @@ body {
 .showErrors {
   background: rgb(255, 103, 103);
 }
+
+.shadow {
+  box-shadow: rgb(205, 225, 255);
+}

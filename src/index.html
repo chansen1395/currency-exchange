@@ -1,22 +1,23 @@
 <html lang="en-US">
 
 <head>
-  <title>Currency Exchange</title>
+  <title>&#128176; Currency Exchange &#128176;</title>
 </head>
 
 <body>
   <div class="container">
-    <div class="jumbotron">
-      <h1>Currency Exchange</h1>
+    <div class="jumbotron shadow">
+      <h1>&#128176; Currency Exchange &#128176;</h1>
       <hr>
       <label for="amount">Choose an amount you wish to exchange:
       </label>
       <input id="amount" type="number" min="0.01" step="0.01" required />
       <br>
       <label for="currency-from">Convert from: </label>
-      <select name="currency-from" id="exchangeFrom"></select>
+      <select name="currency-from" id="exchangeFrom"></select>&#128181;
+      <br>
       <label for="currency-to">Exchange to: </label>
-      <select name="currency-to" id="exchangeTo"></select>
+      <select name="currency-to" id="exchangeTo"></select>&#128183;
       <hr>
       <button class="btn-success" id="exchange">Get Rate</button>
       <hr>
@@ -24,27 +25,20 @@
       </div>
     </div>
 
-    <div class="container">
-      <div class=" row">
-        <div class="reference col-4 card scroll" style="background-color: rgb(180, 255, 192);">
-          <h4 class="card-header">Reference List:</h4>
-        </div>
-
-        <div class="col-4 card results" style="background-color: rgb(182, 151, 255);">
-          <h5 class="card-header">Current Exchange Rates:</h5>
-          <div class = "showRate"></div>
-        </div>
-
-        <div class="col-4 card results" style="background-color: rgb(151, 255, 238);">
-          <h5 class="card-header">Your Exchange Rate:</h5>
-          <div class = "showAmount"></div>
-        </div>
-
+    <div class="container row">
+      <div class="reference col-4 card scroll shadow" style="background-color: rgb(180, 255, 192);">
+        <h4 class="card-header shadow">Reference List:</h4>
+      </div>
+      <div class="col-4 card results shadow" style="background-color: rgb(182, 151, 255);">
+        <h5 class="card-header shadow">Current Exchange Rates:</h5>
+        <div class="showRate"></div>
+      </div>
+      <div class="col-4 card results shadow" style="background-color: rgb(151, 255, 238);">
+        <h5 class="card-header shadow">Your Exchange Rate:</h5>
+        <div class="showAmount"></div>
       </div>
     </div>
-
-  </div>
-  </div>
+    <br><br>
   </div>
 </body>
 

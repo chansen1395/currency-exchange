@@ -1,4 +1,6 @@
 export default class ExchangeRate {  
+
+  // Retrieve user input and attempt to make an API call for exchange rates
   static getRate(currencyFrom, currencyTo, currencyAmount) {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
@@ -15,6 +17,7 @@ export default class ExchangeRate {
     });
   }
 
+  // Generate a list of available currencies for the User to select from
   static getCurrencies() {
     return new Promise(function(resolve, reject) {
       let request = new XMLHttpRequest();
