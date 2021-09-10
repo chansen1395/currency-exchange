@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(255, 205, 253);
+  background-color: rgb(205, 225, 255);
 }
 
 .results, .showErrors{
@@ -9,4 +9,8 @@ body {
 .scroll {
   max-height: 300px;
   overflow-y: auto;
+}
+
+.showErrors {
+  background: rgb(255, 103, 103);
 }
