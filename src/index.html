@@ -11,6 +11,7 @@
       <label for="amount">Choose an amount you wish to exchange:
       </label>
       <input id="amount" type="number" min="0.01" step="0.01" required />
+      <br>
       <label for="currency-from">Convert from: </label>
       <select name="currency-from" id="exchangeFrom"></select>
       <label for="currency-to">Exchange to: </label>
@@ -18,10 +19,29 @@
       <br>
       <button class="btn-success" id="exchange">Get Rate</button>
     </div>
-    <div id="results">
-    <div class="showRate card"></div>
-    <div class="showAmount card"></div>
-    <div class="showErrors card"></div>
+
+    <div class="container">
+      <div class=" row">
+        <div class="reference col-4 card scroll">
+          <h4 class="card-header">Reference List:</h4>
+        </div>
+
+        <div class="col-4 card results">
+          <h5 class="card-header">Current Exchange Rates:</h5>
+          <div class = "showRate"></div>
+        </div>
+
+        <div class="col-4 card results">
+          <h5 class="card-header">Your Exchange Rate:</h5>
+          <div class = "showAmount"></div>
+        </div>
+
+      </div>
+      <div class="showErrors card">
+      </div>
+    </div>
+
+  </div>
   </div>
   </div>
 </body>

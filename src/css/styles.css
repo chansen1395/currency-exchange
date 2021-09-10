@@ -1,7 +1,12 @@
 body {
-  background-color: lightblue;
+  background-color: rgb(255, 205, 253);
 }
 
-#results {
+.results, .showErrors{
   display: none;
+}
+
+.scroll {
+  max-height: 300px;
+  overflow-y: auto;
 }
